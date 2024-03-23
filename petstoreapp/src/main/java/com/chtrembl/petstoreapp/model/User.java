@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import com.chtrembl.petstoreapp.service.MockTelemetryClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -34,7 +35,7 @@ public class User implements Serializable {
 	// time to show Telemetry with APIM requests
 	private List<Product> products;
 
-	@Autowired(required = false)
+	@Autowired
 	private transient TelemetryClient telemetryClient;
 
 	@Autowired
@@ -47,7 +48,7 @@ public class User implements Serializable {
 	@PostConstruct
 	private void initialize() {
 		if (this.telemetryClient == null) {
-			this.telemetryClient = new com.chtrembl.petstoreapp.service.TelemetryClient();
+			this.telemetryClient = new MockTelemetryClient();
 		}
 	}
 

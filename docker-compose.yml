@@ -12,6 +12,8 @@ services:
       - PETSTOREPETSERVICE_URL=http://petstorepetservice:8081
       - PETSTOREPRODUCTSERVICE_URL=http://petstoreproductservice:8082
       - PETSTOREORDERSERVICE_URL=http://petstoreorderservice:8083
+      - APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=1c3d4ca5-a1ec-4986-83a2-25e38986ac2c;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/
+      - APPINSIGHTS_INSTRUMENTATIONKEY=1c3d4ca5-a1ec-4986-83a2-25e38986ac2c
     networks:
       - petstorebridge
 
@@ -22,6 +24,7 @@ services:
       - "8081:8081"
     environment:
       - PETSTOREPETSERVICE_SERVER_PORT=8081
+      - APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=1c3d4ca5-a1ec-4986-83a2-25e38986ac2c;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/
     networks:
       - petstorebridge
 
@@ -32,6 +35,8 @@ services:
       - "8082:8082"
     environment:
       - PETSTOREPRODUCTSERVICE_SERVER_PORT=8082
+      - APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=1c3d4ca5-a1ec-4986-83a2-25e38986ac2c;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/
+      - APPINSIGHTS_INSTRUMENTATIONKEY=1c3d4ca5-a1ec-4986-83a2-25e38986ac2c
     networks:
       - petstorebridge
 
@@ -43,6 +48,8 @@ services:
     environment:
       - PETSTOREORDERSERVICE_SERVER_PORT=8083
       - PETSTOREPRODUCTSERVICE_URL=http://petstoreproductservice:8082
+      - APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=1c3d4ca5-a1ec-4986-83a2-25e38986ac2c;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/
+      - APPINSIGHTS_INSTRUMENTATIONKEY=1c3d4ca5-a1ec-4986-83a2-25e38986ac2c
     networks:
       - petstorebridge
 

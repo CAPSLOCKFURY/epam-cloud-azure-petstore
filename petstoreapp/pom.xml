@@ -70,6 +70,11 @@
             <version>${spring-cloud-azure-starter.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>applicationinsights-spring-boot-starter</artifactId>
+            <version>2.6.4</version>
+        </dependency>
+        <dependency>
             <groupId>com.azure.spring</groupId>
             <artifactId>spring-cloud-azure-starter-active-directory-b2c</artifactId>
             <version>${spring-cloud-azure-starter.version}</version>

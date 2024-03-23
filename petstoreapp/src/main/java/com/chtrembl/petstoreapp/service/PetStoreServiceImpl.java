@@ -120,7 +120,10 @@ public class PetStoreServiceImpl implements PetStoreService {
 	@Override
 	public Collection<Product> getProducts(String category, List<Tag> tags) {
 		List<Product> products = new ArrayList<>();
-
+		if (true) {
+			throw new RuntimeException("Cannot move further");
+		}
+		this.sessionUser.getTelemetryClient().trackEvent(String.format("User %s with sessionId %s is getting products", this.sessionUser.getName(), this.sessionUser.getSessionId()));
 		try {
 			Consumer<HttpHeaders> consumer = it -> it.addAll(this.webRequest.getHeaders());
 			products = this.productServiceWebClient.get()
@@ -148,6 +151,7 @@ public class PetStoreServiceImpl implements PetStoreService {
 				products = products.stream().filter(product -> category.equals(product.getCategory().getName())
 						&& product.getTags().toString().contains("small")).collect(Collectors.toList());
 			}
+			this.sessionUser.getTelemetryClient().trackMetric("productCountRetrieved", products.size());
 			return products;
 		} catch (
 

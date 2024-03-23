@@ -16,4 +16,5 @@ RUN mkdir -p /run/sshd && echo "root:Docker!" | chpasswd
 COPY sshd_config /etc/ssh/ 
 EXPOSE 2222 8080
 COPY --from=build /build/target/*.jar /app/petstoreapp.jar
-ENTRYPOINT ["/bin/bash", "-c", "/usr/sbin/sshd && java -jar /app/petstoreapp.jar"]
+COPY --from=build /build/src/main/resources/app-insights/applicationinsights-agent-3.5.0.jar /app/applicationinsights-agent.jar
+ENTRYPOINT ["/bin/bash", "-c", "/usr/sbin/sshd && java -javaagent:/app/applicationinsights-agent.jar -jar /app/petstoreapp.jar"]
